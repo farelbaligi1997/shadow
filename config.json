@@ -1,7 +1,7 @@
 {
   "inbounds": [
     {
-      "port": "env:PORT",
+      "port": 8080,
       "protocol": "shadowsocks",
       "settings": {
         "clients": [
