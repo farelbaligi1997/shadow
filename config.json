@@ -2,20 +2,20 @@
   "inbounds": [
     {
       "port": 8080,
-      "protocol": "vless",
+      "protocol": "shadowsocks",
       "settings": {
         "clients": [
           {
-            "id": "36459fd0-0c89-4733-b20e-067ffc341bd2",
-            "level": 0
+            "method": "aes-256-gcm",
+            "password": "8f904a8a-4800-4338-82b6-c1e48b2ea162"
           }
         ],
-        "decryption": "none"
+        "network": "tcp,udp"
       },
       "streamSettings": {
         "network": "ws",
         "wsSettings": {
-          "path": "/TG-@Not_Ragnar"
+          "path": "/reci"
         }
       }
     }
