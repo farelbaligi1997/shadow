@@ -1,10 +1,13 @@
 FROM teddysun/v2ray:latest
 
-# Giriş nöqtəsini (entrypoint) sıfırlayırıq ki, yazdığımız skript maneəsiz işləsin
+# Giriş nöqtəsini tamamilə təmizləyirik
 ENTRYPOINT []
+
+# Cloud Run-a konteyner daxilində hansı portu gözlədiyini qəti şəkildə bildiririk
+ENV PORT=8080
 
 # Konfiqurasiya faylını köçürürük
 COPY config.json /etc/v2ray/config.json
 
-# Əvvəlcə portu əvəzləyirik, sonra v2ray-i işə salırıq
-CMD ["sh", "-c", "sed -i \"s/8080/$PORT/g\" /etc/v2ray/config.json && v2ray run -config /etc/v2ray/config.json"]
+# Heç bir skript olmadan, birbaşa orijinal v2ray əmrini çağırırıq
+CMD ["v2ray", "run", "-config", "/etc/v2ray/config.json"]
