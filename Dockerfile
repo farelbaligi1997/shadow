@@ -1,14 +1,7 @@
 FROM teddysun/v2ray:latest
 
-# Expose the correct container port (8080)
-EXPOSE 8080
-
-# Copy the VLESS config into the container
+# Konfiqurasiya faylını konteynerin içinə köçürürük
 COPY config.json /etc/v2ray/config.json
 
-# Run V2Ray with the config file
-CMD ["v2ray", "run", "-config", "/etc/v2ray/config.json"]
-
-
-# join telegram https://t.me/ragnarservers  for new updates 
-# my telegram username is @Not_Ragnar
+# Cloud Run-ın təyin etdiyi dinamik portu config faylına yazmaq üçün qabıq (shell) əmri istifadə edirik
+CMD sh -c 'sed -i "s/8080/$PORT/g" /etc/v2ray/config.json && /usr/bin/v2ray run -config /etc/v2ray/config.json'
